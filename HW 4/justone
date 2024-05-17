@@ -1,0 +1,6 @@
+#!/bin/sh
+
+#justone command that calls the git command to output the difference between the last and current commit
+#git log | grep commit | head -n 2 | sed 's/commit //'
+
+git diff HEAD^..HEAD

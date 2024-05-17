@@ -1,0 +1,8 @@
+#!/bin/sh
+
+#Write a shell or Python script compare-releases that displays the difference 
+#between two tzdb releases given as arguments to the command. For example, 
+#compare-releases 2023d 2024a should output the difference between tzdb release 2023d and tzdb release 2024a. 
+#Put the output of this particular invocation into a file 2023d-2024a.diff
+
+git diff $1..$2

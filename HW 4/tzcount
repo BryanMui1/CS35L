@@ -1,0 +1,5 @@
+#!/bin/sh
+
+#Write a shell or Python script tzcount that accepts any revision-range argument that git log would accept, 
+#and outputs a simple report of time zones and number of commits in that revision-range that come from that time zone. 
+
