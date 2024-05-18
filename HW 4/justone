@@ -4,3 +4,4 @@
 #git log | grep commit | head -n 2 | sed 's/commit //'
 
 git diff HEAD^..HEAD
+

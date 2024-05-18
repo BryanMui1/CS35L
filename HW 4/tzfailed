@@ -1,0 +1,55 @@
+#!/bin/sh
+
+#Write a shell or Python script tzcount that accepts any revision-range argument that git log would accept, 
+#and outputs a simple report of time zones and number of commits in that revision-range that come from that time zone. 
+
+# grep "\-0700" gitlog.txt | wc -l
+
+# 1) implement the output of time zone commits
+# 2) implement the git log argument (range)
+
+
+timeArray=()
+temp_file=$(mktemp)
+tmp2=$(mktemp)
+
+git log > $temp_file
+grep "Date:" $temp_file | awk '{print $NF}' > $tmp2
+
+# $tmp2 stores the timezone strings
+
+#declare -A animals
+#animals=(["moo"]=1 ["woof"]=2)
+#echo "${animals[@]}" > $temp_file
+
+#if [ -n "$(grep '1' $temp_file)" ]; then
+#    echo "is in the dict!"
+#else
+#    echo "not in disct bruhter"
+#fi
+
+declare -A timeZones
+timeZones=()
+
+tmp3=$(mktemp)
+while IFS= read -r line; do
+    #check if the line is a key in the dict
+    echo "${!timeZones[@]}" > $tmp3
+
+    if grep -q "\\$line" $tmp3; then
+        ((timeZones["$line"]++))
+        echo "idk"
+    else   
+        timeZones["$line"]=1
+        echo "appended"
+    fi
+done < "$tmp2"
+
+# echo "${!timeZones[@]}"
+# echo "${timeZones[@]}"
+
+
+rm $temp_file
+rm $tmp2
+rm $tmp3
+
