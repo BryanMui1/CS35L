@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #Write a shell or Python script compare-releases that displays the difference 
 #between two tzdb releases given as arguments to the command. For example, 
